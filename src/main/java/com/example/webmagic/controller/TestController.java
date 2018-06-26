@@ -12,9 +12,13 @@ public class TestController {
     @Autowired
     SpiderService spiderService;
 
-    @RequestMapping("/myController")
+    @RequestMapping("/my-controller")
     public String testMyController(){
-        spiderService.spiderStart();
         return "This is my controller";
+    }
+
+    @RequestMapping("/spider-start")
+    public void spiderStart(){
+        spiderService.spiderStart();
     }
 }
