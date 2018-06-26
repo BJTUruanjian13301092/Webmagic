@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class UtilTest {
 
     @Test
-    public void graphWaterPicTest() throws Exception {
+    public void graphTest() throws Exception {
 
 //        GraphUtil.convertFontToImage("李闱吃屎", "宋体", 20, "990033",
 //                "image\\" + System.currentTimeMillis() + ".png");
