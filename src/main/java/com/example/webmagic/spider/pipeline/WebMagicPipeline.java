@@ -27,7 +27,7 @@ public class WebMagicPipeline implements Pipeline {
                 e.printStackTrace();
             }
 
-            //GraphUtil.rotate(fileName, "image\\" + System.currentTimeMillis() + "." + imageFileType, 30.0);
+            //GraphUtil.rotateImage(fileName, "image\\" + System.currentTimeMillis() + "." + imageFileType, 30.0);
             //GraphUtil.addWaterText(fileName, "image\\" + System.currentTimeMillis() + "." + imageFileType, "hahaha");
         }
 

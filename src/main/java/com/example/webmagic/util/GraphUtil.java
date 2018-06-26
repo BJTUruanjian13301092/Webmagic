@@ -82,7 +82,7 @@ public class GraphUtil {
      * @param destImagePath
      * @param angle
      */
-    public static void rotate(String srcImagePath, String destImagePath, double angle) {
+    public static void rotateImage(String srcImagePath, String destImagePath, double angle) {
         try {
             GMOperation op = new GMOperation();
             op.rotate(angle);
@@ -97,6 +97,68 @@ public class GraphUtil {
     }
 
     /**
+     * 根据尺寸缩放图片 [等比例缩放:参数height为null,按宽度缩放比例缩放;参数width为null,按高度缩放比例缩放]
+     * @param srcImagePath 源图片路径
+     * @param destImagePath   处理后图片路径
+     * @param width     缩放后的图片宽度
+     * @param height    缩放后的图片高度
+     */
+    public static void zoomImage(String srcImagePath, String destImagePath, Integer width, Integer height) {
+
+        try{
+            GMOperation op = new GMOperation();
+            op.addImage(srcImagePath);
+            if (width == null) {// 根据高度缩放图片
+                op.resize(null, height);
+            } else if (height == null) {// 根据宽度缩放图片
+                op.resize(width);
+            } else {
+                op.resize(width, height);
+            }
+            op.addImage(destImagePath);
+            ConvertCmd convert = new ConvertCmd(true);
+            convert.setSearchPath(graphicsMagickPath);
+            convert.run(op);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IM4JavaException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 裁剪图片
+     * @param srcImagePath 源图片路径
+     * @param destImagePath   处理后图片路径
+     * @param x         起始X坐标
+     * @param y         起始Y坐标
+     * @param width     裁剪宽度
+     * @param height    裁剪高度
+     */
+    public static void cutImage(String srcImagePath, String destImagePath, int x, int y, int width, int height) {
+
+        try {
+            GMOperation op = new GMOperation();
+            op.addImage(srcImagePath);
+            // width：裁剪的宽度 * height：裁剪的高度 * x：裁剪的横坐标 * y：裁剪纵坐标
+            op.crop(width, height, x, y);
+            op.addImage(destImagePath);
+            ConvertCmd convert = new ConvertCmd(true);
+            convert.setSearchPath(graphicsMagickPath);
+            convert.run(op);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IM4JavaException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 把文字转化为一张背景透明的png图片
      * @param str 文字的内容
      * @param fontType 字体，例如宋体
@@ -105,7 +167,7 @@ public class GraphUtil {
      * @param outfile  png图片的路径
      * @throws Exception
      */
-    public static void converFontToImage(String str, String fontType, int fontSize, String colorStr, String outfile) throws Exception{
+    public static void convertFontToImage(String str, String fontType, int fontSize, String colorStr, String outfile) throws Exception{
 
         str = new String(str.getBytes(), "utf-8");
 

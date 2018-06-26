@@ -12,9 +12,17 @@ public class UtilTest {
 
     @Test
     public void graphWaterPicTest() throws Exception {
-//        GraphUtil.converFontToImage("李闱吃屎", "宋体", 20, "990033",
+
+//        GraphUtil.convertFontToImage("李闱吃屎", "宋体", 20, "990033",
 //                "image\\" + System.currentTimeMillis() + ".png");
+
 //        GraphUtil.addWaterPic("image\\1529983188324.png", "image\\1529981616233.jpeg",
 //                "image\\1529981616233.jpeg", "southwest", 100, 300, 300);
+
+//        GraphUtil.zoomImage("image\\1529981616233.jpeg", "image\\" + System.currentTimeMillis() + ".jpeg",
+//                160, 100);
+
+//        GraphUtil.cutImage("image\\1529981616233.jpeg", "image\\" + System.currentTimeMillis() + ".jpeg",
+//                0, 0, 100, 100);
     }
 }

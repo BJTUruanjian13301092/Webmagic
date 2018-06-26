@@ -12,6 +12,13 @@ import java.io.InputStream;
 
 public class HttpUtil {
 
+    /**
+     * 下载文件
+     * @param url
+     * @param fileType
+     * @return
+     * @throws IOException
+     */
     public static String downloadFile(String url, String fileType) throws IOException {
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -41,6 +48,11 @@ public class HttpUtil {
         return "fail";
     }
 
+    /**
+     * 根据图片URL找出图片类型
+     * @param url
+     * @return
+     */
     public static String getFileTypeByUrl(String url){
         String[] splitUrl = url.split("/");
         String fileName = splitUrl[splitUrl.length - 1];
