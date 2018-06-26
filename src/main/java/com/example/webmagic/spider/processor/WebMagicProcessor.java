@@ -20,6 +20,9 @@ public class WebMagicProcessor extends BaseProcessor {
             logger.info("This is the home page");
             List<String> listTarget = page.getHtml().xpath("//*[@class='chapter']/a/@href").all();
             page.addTargetRequests(listTarget);
+
+            String imageUrl = page.getHtml().xpath("//*[@id='book-search-results']/div[1]/section/p[1]/img/@src").toString();
+            page.putField("imageUrl", imageUrl);
         }
 
         if(page.getUrl().regex(INTRO_PAGE).match()){
@@ -32,9 +35,6 @@ public class WebMagicProcessor extends BaseProcessor {
 
         String title = page.getHtml().xpath("//*[@class='normal markdown-section']/[1]/text()").toString();
         page.putField("title", title);
-
-//        String imageUrl = page.getHtml().xpath("//*[@id='book-search-results']/div[1]/section/p[1]/img/@src").toString();
-//        page.putField("imageUrl", imageUrl);
 
     }
 

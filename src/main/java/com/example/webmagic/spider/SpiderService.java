@@ -15,7 +15,7 @@ public class SpiderService {
         Spider.create(new WebMagicProcessor())
                 .addUrl("http://webmagic.io/docs/zh/")
                 .addPipeline(new ConsolePipeline())
-                //.addPipeline(new WebMagicPipeline())
+                .addPipeline(new WebMagicPipeline())
                 .thread(5)
                 .run();
     }

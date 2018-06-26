@@ -4,11 +4,7 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 
-public class GithubPageProcessor implements PageProcessor {
-
-    private Site site = Site.me()
-            .setRetryTimes(3).setSleepTime(1000).setCharset("utf-8")
-            .setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36");
+public class GithubPageProcessor extends BaseProcessor {
 
     @Override
     public void process(Page page) {
