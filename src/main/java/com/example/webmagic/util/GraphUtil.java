@@ -54,9 +54,11 @@ public class GraphUtil {
      * @param gravity  图片位置
      * @param dissolve 水印透明度
      */
-    public static void addWaterPic(String waterImagePath, String srcImagePath, String destImagePath, String gravity, int dissolve) {
+    public static void addWaterPic(String waterImagePath, String srcImagePath,
+                                   String destImagePath, String gravity, int dissolve, int width, int height) {
         IMOperation op = new IMOperation();
         op.gravity(gravity); //位置center：中心;northwest：左上;southeast：右下
+        op.geometry(width, height);
         op.dissolve(dissolve); //水印清晰度 ，0-100  最好设置高点要不看起来没效果
         op.addImage(waterImagePath);
         op.addImage(srcImagePath);
