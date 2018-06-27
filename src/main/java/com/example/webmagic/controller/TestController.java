@@ -17,8 +17,13 @@ public class TestController {
         return "This is my controller";
     }
 
-    @RequestMapping("/spider-start")
-    public void spiderStart(){
-        spiderService.spiderStart();
+    @RequestMapping("/spider-webmagic")
+    public void webmagicStart(){
+        spiderService.webMagicSpider();
+    }
+
+    @RequestMapping("/spider-baidu")
+    public void baiduStart(){
+        spiderService.baiduSpider();
     }
 }
