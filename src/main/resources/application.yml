@@ -13,7 +13,7 @@ mybatis:
 spring:
   profiles: dev
   datasource:
-    url: jdbc:mysql://bj-cdb-0ont0bxl.sql.tencentcdb.com:63551/gallery?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&autoReconnect=true
+    url: jdbc:mysql://bj-cdb-0ont0bxl.sql.tencentcdb.com:63551/spider?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&autoReconnect=true
     username: root
     password: hahaha123
     driverClassName: com.mysql.jdbc.Driver
