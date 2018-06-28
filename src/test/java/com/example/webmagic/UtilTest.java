@@ -6,12 +6,19 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Map;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = WebmagicApplication.class)
 public class UtilTest {
 
     @Test
     public void graphTest() throws Exception {
+
+//        Map<String, String> graphInfo = GraphUtil.getImageInfo("image\\1529981616233.jpeg");
+//        for(String key : graphInfo.keySet()){
+//            System.out.println(key + ": " + graphInfo.get(key));
+//        }
 
 //        GraphUtil.convertFontToImage("李闱吃屎", "宋体", 20, "990033",
 //                "image\\" + System.currentTimeMillis() + ".png");

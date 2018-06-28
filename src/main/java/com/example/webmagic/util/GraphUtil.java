@@ -1,6 +1,7 @@
 package com.example.webmagic.util;
 
 import org.im4java.core.*;
+import org.im4java.process.ArrayListOutputConsumer;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -11,13 +12,64 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GraphUtil {
 
-    /**
-     * GraphicsMagick的安装目录
-     */
+
+    //GraphicsMagick的安装目录
     private static final String graphicsMagickPath = "D:\\workingSoftwares\\GraphicsMagick\\GraphicsMagick-1.3.30-Q16";
+
+    // 图片质量
+    private static final String IMAGE_QUALITY = "quality";
+
+    // 图片高度
+    private static final String IMAGE_HEIGHT = "height";
+
+    // 图片宽度
+    private static final String IMAGE_WIDTH = "width";
+
+    // 图片格式
+    private static final String IMAGE_SUFFIX = "suffix";
+
+    // 图片大小
+    private static final String IMAGE_SIZE = "size";
+
+    // 图片路径
+    private static final String IMAGE_PATH = "path";
+
+
+    public static Map<String, String> getImageInfo(String imagePath) {
+
+        Map<String, String> imageInfo = new HashMap<>();
+        try {
+            IMOperation op = new IMOperation();
+            op.format("%w,%h,%d/%f,%Q,%b,%e");
+            op.addImage();
+            ImageCommand identifyCmd = new IdentifyCmd(true);
+            identifyCmd.setSearchPath(graphicsMagickPath);
+
+            ArrayListOutputConsumer output = new ArrayListOutputConsumer();
+            identifyCmd.setOutputConsumer(output);
+            identifyCmd.run(op, imagePath);
+            ArrayList<String> cmdOutput = output.getOutput();
+            String[] result = cmdOutput.get(0).split(",");
+            if (result.length == 6) {
+                imageInfo.put(IMAGE_WIDTH, result[0]);
+                imageInfo.put(IMAGE_HEIGHT, result[1]);
+                imageInfo.put(IMAGE_PATH, result[2]);
+                imageInfo.put(IMAGE_QUALITY, result[3]);
+                imageInfo.put(IMAGE_SIZE, result[4]);
+                imageInfo.put(IMAGE_SUFFIX, result[5]);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return imageInfo;
+    }
 
     /**
      * 图片加文本水印
