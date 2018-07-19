@@ -19,6 +19,9 @@ public class TestController {
     @Autowired
     SpiderService spiderService;
 
+    @Autowired
+    String printString;
+
     @RequestMapping("/my-controller")
     public String testMyController(){
         return "This is my controller";
@@ -57,5 +60,11 @@ public class TestController {
         response.addCookie(cookie2);
 
         return "success";
+    }
+
+    @RequestMapping("/test-config")
+    public String testConfigBean(){
+        String str = printString;
+        return str;
     }
 }
