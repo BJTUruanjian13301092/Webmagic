@@ -27,16 +27,6 @@ public class TestController {
         return "This is my controller";
     }
 
-    @RequestMapping("/spider-webmagic")
-    public void webmagicStart(){
-        spiderService.webMagicSpider();
-    }
-
-    @RequestMapping("/spider-baidu")
-    public void baiduStart(){
-        spiderService.baiduSpider();
-    }
-
     @RequestMapping("/test-request")
     public String testRequest(HttpServletRequest request, HttpServletResponse response){
         Map<String, Object> map = new HashMap<>();
