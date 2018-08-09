@@ -1,5 +1,6 @@
 package com.example.webmagic.controller;
 
+import cn.xsshome.taip.face.TAipFace;
 import cn.xsshome.taip.nlp.TAipNlp;
 import cn.xsshome.taip.ptu.TAipPtu;
 import cn.xsshome.taip.speech.TAipSpeech;
@@ -24,10 +25,16 @@ public class TencentAIController {
 
     private static final String TENCENT_AI_APPID = "2107688849";
 
+    /**  具体细节请参考 : https://gitee.com/xshuai/taip/blob/master/README.md  **/
+
+    /**
+     * 自然语言处理
+     */
     @RequestMapping("/textAnalyze")
     public void textAnalyze() throws Exception {
 
         String filePath1 = "D:\\projects\\webMagic\\webmagic\\TencentAI_Material\\google.jpg";
+        String filePath2 = "D:\\projects\\webMagic\\webmagic\\TencentAI_Material\\voice_ttaSynthesis.mp3";
 
         TAipNlp aipNlp = new TAipNlp(TENCENT_AI_APPID, TENCENT_AI_APPKEY);
         String session = System.currentTimeMillis() / 1000 + "";
@@ -64,8 +71,14 @@ public class TencentAIController {
 
         String imageTranslate = aipNlp.nlpImageTranslate(filePath1, session, "doc","zh", "en");//图片翻译
         System.out.println(imageTranslate);
+
+        String nlpSpeechTranslate = aipNlp.nlpSpeechTranslate(6, 0, 1, session, filePath2,"zh", "en");//语音翻译
+        System.out.println(nlpSpeechTranslate);
     }
 
+    /**
+     * 图像特效
+     */
     @RequestMapping("/imageSpecialEffect")
     public void imageSpecialEffect() throws Exception {
 
@@ -119,6 +132,62 @@ public class TencentAIController {
 
     }
 
+    /**
+     * 人脸分析
+     */
+    @RequestMapping("/faceAnalyze")
+    public void faceAnalyze() throws Exception {
+
+        String imagePath = "D:\\projects\\webMagic\\webmagic\\TencentAI_Material\\yitong.jpg";
+        String imagePath2 = "D:\\projects\\webMagic\\webmagic\\TencentAI_Material\\lufei.jpg";
+
+        TAipFace aipFace = new TAipFace(TENCENT_AI_APPID, TENCENT_AI_APPKEY);
+        Gson gson = new Gson();
+
+        /**********个体管理**********/
+        String faceNewperson = aipFace.faceNewperson(imagePath, "group01","01","lyt");//个体创建
+        System.out.println(faceNewperson);
+
+        String faceSetInfo = aipFace.faceSetInfo("01", "lyt","我就是我,不一样的烟火");//设置信息
+        System.out.println(faceSetInfo);
+
+        String faceGetInfo = aipFace.faceGetInfo("01");//获取信息
+        System.out.println(faceGetInfo);
+
+        /**********人脸识别**********/
+        String faceDetect = aipFace.detect(imagePath);//人脸检测与分析
+        System.out.println(faceDetect);
+
+        String faceCompare = aipFace.faceCompare(imagePath, imagePath2);//人脸对比
+        System.out.println(faceCompare);
+
+        String faceShape = aipFace.faceShape(imagePath);//五官定位
+        System.out.println(faceShape);
+
+        String faceIdentify = aipFace.faceIdentify(imagePath, "group01", 1);//人脸识别
+        System.out.println(faceIdentify);
+
+        String faceVerify = aipFace.faceVerify(imagePath, "01");//人脸验证
+        System.out.println(faceVerify);
+
+        /**********信息查询**********/
+        String groupIds = aipFace.getGroupIds();//获取组列表
+        System.out.println(groupIds);
+
+        String personIds = aipFace.getPersonIds("group01");//获取个体列表
+        System.out.println(personIds);
+
+        String faceIds = aipFace.getFaceIds("01");//获取人脸列表
+        System.out.println(faceIds);
+
+        String faceInfo = aipFace.getFaceInfo("2704311652640119053");
+        System.out.println(faceInfo);
+
+    }
+
+    /**
+     * 声音处理
+     */
     @RequestMapping("/voiceAnalyze")
     public void speechAnalyze() throws Exception {
 
