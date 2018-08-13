@@ -16,13 +16,29 @@ public class KafkaTest {
     @Autowired
     KafkaService kafkaService;
 
-    @Test
-    public void createTopic() throws ExecutionException, InterruptedException {
-        kafkaService.createTopic();
-    }
+//    @Test
+//    public void createTopic() throws ExecutionException, InterruptedException {
+//        kafkaService.createTopic();
+//    }
+//
+//    @Test
+//    public void listAllTopics() throws ExecutionException, InterruptedException {
+//        kafkaService.listAllTopics();
+//    }
+//
+//    @Test
+//    public void describeCluster() throws ExecutionException, InterruptedException {
+//        kafkaService.describeCluster();
+//    }
+//
+//    @Test
+//    public void describeTopics() throws ExecutionException, InterruptedException {
+//        kafkaService.describeTopics();
+//    }
+//
+//    @Test
+//    public void describeTopicConfig() throws ExecutionException, InterruptedException {
+//        kafkaService.describeTopicConfig();
+//    }
 
-    @Test
-    public void listAllTopics() throws ExecutionException, InterruptedException {
-        kafkaService.listAllTopics();
-    }
 }

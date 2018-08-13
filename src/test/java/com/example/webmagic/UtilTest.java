@@ -12,24 +12,24 @@ import java.util.Map;
 @SpringBootTest(classes = WebmagicApplication.class)
 public class UtilTest {
 
-    @Test
-    public void graphTest() throws Exception {
-
+//    @Test
+//    public void graphTest() throws Exception {
+//
 //        Map<String, String> graphInfo = GraphUtil.getImageInfo("image\\1529981616233.jpeg");
 //        for(String key : graphInfo.keySet()){
 //            System.out.println(key + ": " + graphInfo.get(key));
 //        }
-
+//
 //        GraphUtil.convertFontToImage("李闱吃屎", "宋体", 20, "990033",
 //                "image\\" + System.currentTimeMillis() + ".png");
-
+//
 //        GraphUtil.addWaterPic("image\\1529983188324.png", "image\\1529981616233.jpeg",
 //                "image\\1529981616233.jpeg", "southwest", 100, 300, 300);
-
+//
 //        GraphUtil.zoomImage("image\\1529981616233.jpeg", "image\\" + System.currentTimeMillis() + ".jpeg",
 //                160, 100);
-
+//
 //        GraphUtil.cutImage("image\\1529981616233.jpeg", "image\\" + System.currentTimeMillis() + ".jpeg",
 //                0, 0, 100, 100);
-    }
+//    }
 }

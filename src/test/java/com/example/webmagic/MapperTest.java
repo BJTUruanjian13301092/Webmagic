@@ -14,8 +14,8 @@ public class MapperTest {
     @Autowired
     InformationMapper informationMapper;
 
-    @Test
-    public void informationMapperTest(){
+//    @Test
+//    public void informationMapperTest(){
 //        informationMapper.getAllInfo();
-    }
+//    }
 }
