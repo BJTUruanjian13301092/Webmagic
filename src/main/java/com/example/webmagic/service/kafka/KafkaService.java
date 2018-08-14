@@ -99,6 +99,4 @@ public class KafkaService {
         System.out.println("Current topics in this cluster: " + topicNames);
     }
 
-
-
 }
