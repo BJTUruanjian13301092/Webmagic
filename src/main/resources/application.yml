@@ -21,3 +21,10 @@ spring:
     validationQuery: select 1
     testWhileIdle: true
     timeBetweenEvictionRunsMillis: 3600000
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    pool:
+      max-active: 10
+      max-idle: 5
