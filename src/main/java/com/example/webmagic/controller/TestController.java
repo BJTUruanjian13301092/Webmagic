@@ -1,6 +1,7 @@
 package com.example.webmagic.controller;
 
 import com.example.webmagic.spider.SpiderService;
+import com.example.webmagic.util.AESUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,5 +57,18 @@ public class TestController {
     public String testConfigBean(){
         String str = printString;
         return str;
+    }
+
+    @RequestMapping("/aes")
+    public void testAES(){
+        String content = "hello world";
+        String key = "super_key";
+        String encryptCipher = AESUtil.aesEncrypt(content, key, false);
+        String contentAfterEncrypt = AESUtil.aesDecrypt(encryptCipher, key);
+
+        System.out.println("content is : " +  content);
+        System.out.println("key is : " + key);
+        System.out.println("cipher is : " + encryptCipher);
+        System.out.println("content after encrypt is : " + contentAfterEncrypt);
     }
 }
