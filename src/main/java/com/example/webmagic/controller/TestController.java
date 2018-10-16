@@ -3,8 +3,7 @@ package com.example.webmagic.controller;
 import com.example.webmagic.spider.SpiderService;
 import com.example.webmagic.util.AESUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -70,5 +69,14 @@ public class TestController {
         System.out.println("key is : " + key);
         System.out.println("cipher is : " + encryptCipher);
         System.out.println("content after encrypt is : " + contentAfterEncrypt);
+    }
+
+    @RequestMapping("/param")
+    public void testParam(@RequestBody Map<String, Object> mapParam,
+                          @RequestParam String abc,
+                          @RequestHeader String head){
+        System.out.println("mapParam: " + mapParam);
+        System.out.println("abc: " + abc);
+        System.out.println("head: " + head);
     }
 }
