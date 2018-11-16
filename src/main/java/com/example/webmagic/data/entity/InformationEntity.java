@@ -1,6 +1,10 @@
 package com.example.webmagic.data.entity;
 
-public class InformationEntity {
+import java.io.Serializable;
+
+public class InformationEntity implements Serializable {
+
+    private static final long serialVersionUID = -1L;
 
     private Long id;
 
